@@ -25,6 +25,7 @@ const getMovieDetails = async (id) => {
     });
     const data = resp.data;
 
+    //info a mostrar en los detalles de la pelicula
     peliDetails.value = {
       titulo: data.title,
       descripcion: data.overview,
@@ -45,6 +46,7 @@ const getMovieDetails = async (id) => {
   } catch (error) {
     console.log('Error');
   } finally {
+    //terminar el loading
     loading.value = false; 
   }
 };
@@ -72,6 +74,7 @@ const getMovieDetails = async (id) => {
       <h5 class="card-title">{{ peliDetails.titulo }}</h5>
       <p class="card-text descripcion">{{ peliDetails.descripcion }}</p>
       <p class="card-text"><strong>Actores:</strong> {{ peliDetails.actores }}</p>
+      <!-- !Regresar despues de ver los detalles de la pelicula -->
       <RouterLink 
         to="/movie" 
         class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3 d-flex justify-content-center" 
@@ -88,6 +91,7 @@ const getMovieDetails = async (id) => {
 </template>
 
 <style scoped>
+/*Estilos spinner */
 .spinner-container {
   display: flex;
   justify-content: center;
@@ -107,14 +111,12 @@ const getMovieDetails = async (id) => {
 .card-img-top {
   width: 100%;
   height: 300px;
-  /*llenar contenedor */
   object-fit:contain;
 }
 
 .card-body {
   padding: 10px;
   max-height: 360px;
-  /* evitar desbordamiento */
   overflow: hidden;
 }
 
@@ -132,6 +134,7 @@ const getMovieDetails = async (id) => {
   color: #000000;
 }
 
+/* estilos spinner */
 .loader {
   max-width: 15rem;
   width: 100%;
@@ -139,6 +142,7 @@ const getMovieDetails = async (id) => {
   stroke-linecap: round;
 }
 
+/* Estilos spinner */
 circle {
   fill: none;
   stroke-width: 3.5;

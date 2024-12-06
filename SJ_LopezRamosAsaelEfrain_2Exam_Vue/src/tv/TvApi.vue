@@ -14,6 +14,7 @@ fetch('https://api.themoviedb.org/3/trending/tv/day?api_key=90a80049eeae86e04ced
     // muestra solo 20 peliculas 
     tvShows.value = res.results.slice(0,28);
     const shows = [];
+    //informacion basica a mostrar
     for (const show of tvShows.value) {
       shows.push({
         id: show.id,
@@ -26,6 +27,7 @@ fetch('https://api.themoviedb.org/3/trending/tv/day?api_key=90a80049eeae86e04ced
   })
   .catch(err => console.error(err));
 
+  //Botones y valores para desplazarse
 const valor = 6;
 const inicio = ref(0);
 const fin = ref(6);
@@ -45,13 +47,14 @@ const backShow = () => {
     scrollToTop(); 
   }
 };
-
+//REgresar arriba despues de seleccionar previo o next
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 </script>
 
 <template>
+  <!-- !informacion a mostrar en card -->
   <h5 class="display-5 mt-4 ms-5" id="titulo">TV Shows Populares</h5>
 
   <div class="row d-flex justify-content-center">
@@ -62,6 +65,7 @@ const scrollToTop = () => {
       :imagen="show.image" 
       class="col-4 d-flex"
     >
+    <!-- ? boton para ver los detalles del show -->
       <RouterLink 
           :to="`/tv/${show.id}`" 
           class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3" 
@@ -73,6 +77,7 @@ const scrollToTop = () => {
   </div>
 
   <div class="d-flex justify-content-center">
+    <!-- ?botones para moverse  -->
     <button type="button" class="btn btn-outline-secondary btn-lg me-3 mb-4 mt-3" 
       data-mdb-ripple-init 
       data-mdb-ripple-color="dark"

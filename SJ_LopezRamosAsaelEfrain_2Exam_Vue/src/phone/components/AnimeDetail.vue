@@ -23,7 +23,7 @@ const getAnimeDetails = async (id) => {
       }
     });
     const data = resp.data.data;
-
+    //Informacion detallada a mostrar 
     animeDetails.value = {
       titulo: data.title,
       episodios: data.episodes,
@@ -54,6 +54,7 @@ const getAnimeDetails = async (id) => {
 
   <!-- Card del anime -->
   <div v-else class="d-flex justify-content-center align-items-center">
+    <!-- ?informacion a mostrar del anime especifico -->
     <div class="card">
       <img :src="animeDetails.imagen" :alt="`Imagen del anime ${animeDetails.titulo}`" class="card-img-top" />
       <div class="card-body">
@@ -61,6 +62,7 @@ const getAnimeDetails = async (id) => {
         <p class="card-text"><strong>Episodios:</strong> {{ animeDetails.episodios }}</p>
         <p class="card-text"><strong>Emisión:</strong> {{ animeDetails.fechaAired }}</p>
         <p class="card-text descripcion">{{ animeDetails.sinopsis }}</p>
+        <!-- !Regresar a dondes estan los demas animes -->
         <RouterLink 
           to="/anime" 
           class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3 d-flex justify-content-center" 
@@ -76,6 +78,7 @@ const getAnimeDetails = async (id) => {
 </template>
 
 <style scoped>
+/* estilo spinner */
 .spinner-container {
   display: flex;
   justify-content: center;
@@ -118,6 +121,7 @@ const getAnimeDetails = async (id) => {
   color: #000000;
 }
 
+/* Estilo spinner */
 .loader {
   max-width: 15rem;
   width: 100%;
@@ -125,6 +129,7 @@ const getAnimeDetails = async (id) => {
   stroke-linecap: round;
 }
 
+/* Estilo spinner */
 circle {
   fill: none;
   stroke-width: 3.5;

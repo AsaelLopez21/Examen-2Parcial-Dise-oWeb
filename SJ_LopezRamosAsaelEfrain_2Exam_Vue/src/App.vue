@@ -11,6 +11,7 @@ import { RouterView, RouterLink } from 'vue-router';
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mx-auto d-flex flex-row text-center mt-3 mt-lg-0">
+        <!-- !router links para navegar -->
         <li class="nav-item mx-2">
           <RouterLink to="/" class="link nav-link">Home</RouterLink>
         </li>
@@ -31,6 +32,7 @@ import { RouterView, RouterLink } from 'vue-router';
   </div>
 </nav>
 
+  <!-- ?informacion que tiene el router que creamos -->
   <div class="container">
     <RouterView />
   </div>
@@ -43,7 +45,7 @@ import { RouterView, RouterLink } from 'vue-router';
 
 .link {
   color: #0fe2f1;
-  text-decoration: none; /* Quitar subrayado */
+  text-decoration: none;
 }
 
 .link:hover {

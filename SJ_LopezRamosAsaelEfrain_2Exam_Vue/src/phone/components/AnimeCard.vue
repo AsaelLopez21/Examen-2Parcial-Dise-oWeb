@@ -1,4 +1,5 @@
 <script setup>
+//informacion a mostrar
 defineProps({
   titulo: {
     type: String,
@@ -12,6 +13,7 @@ defineProps({
 </script>
 
 <template>
+  <!-- !Informacion basica a mostrar -->
   <div class="card">
     <img :src="imagen" :alt="`Imagenanime ${titulo}`" class="card-img-top" />
     <div class="card-body">
@@ -28,11 +30,11 @@ defineProps({
   max-height: 800px;
   display: flex;
   flex-direction: column; /* elementos en columna */
-  overflow: hidden; /* Evitar desbordamiento */
+  overflow: hidden; 
   border: 1px solid #dee2e6; 
   background-color: #d6d2c4;
-  border: 10px solid #e1e1e1; /* Borde inicial */
-  transition: border-color 0.3s ease; /* Transición suave para el borde */ 
+  border: 10px solid #e1e1e1; 
+  transition: border-color 0.3s ease; /* Transicion*/ 
 }
 
 .card-img-top {
@@ -61,9 +63,9 @@ defineProps({
 }
 
 .card:hover {
-  border-color: #0fe2f1; /* Color del borde*/
+  border-color: #0fe2f1; 
   transform: scale(1.05); /* Aumenta el tamaño de la tarjeta al hacer hover */
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);  /* Agrega una sombra azul brillante */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);  /* Agrega sombra */
 
 }
 </style>

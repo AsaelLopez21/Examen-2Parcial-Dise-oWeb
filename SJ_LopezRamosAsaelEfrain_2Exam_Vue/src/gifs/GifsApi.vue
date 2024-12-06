@@ -1,4 +1,5 @@
 <script setup>
+//Obtener los gifs de la api
 import { ref } from "vue";
 import PostCard from "./components/GiftCard.vue";  
 
@@ -13,17 +14,18 @@ const options = {
 const apiKey = "jKGjDCLIc0DawR2NTxGBtZzGgjnymaQ5";
 const url = `https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=25&offset=0&rating=g&bundle=messaging_non_clips`;
 
+
 const getGifs = async () => {
   try {
-    // Hacemos la solicitud para obtener los GIFs
     const resp = await fetch(url, options);
     const data = await resp.json();
-    gifs.value = data.data; // Guardamos los GIFs obtenidos
+    gifs.value = data.data; 
   } catch (error) {
     console.log("Error:", error);
   }
 };
 
+//Para moverse entre los gifs mostrados 6 por pantalla
 const valor = 6;
 const inicio = ref(0);
 const fin = ref(6);
@@ -44,6 +46,7 @@ const backGif = () => {
   }
 };
 
+//regresar arriba cuando hacemos next
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -52,6 +55,7 @@ getGifs();
 </script>
 
 <template>
+  <!-- !Informacion a mostrar en card -->
   <h5 class="display-5 mt-4 ms-5" id="titulo">GIFs Populares</h5>
 
   <div class="row d-flex justify-content-center">
@@ -62,16 +66,11 @@ getGifs();
       :imagen="gif.images.fixed_height.url" 
       class="col-4 d-flex"
     >
-      <RouterLink 
-        :to="`/gif/${gif.id}`" 
-        class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3" 
-        data-mdb-ripple-init 
-        data-mdb-ripple-color="light">
-        Ver Detalles
-      </RouterLink>
+
     </PostCard>
   </div>
 
+  <!-- ?botontes back next  -->
   <div class="d-flex justify-content-center">
     <button 
       type="button" 
@@ -102,8 +101,8 @@ getGifs();
 
   .card {
     margin: 40px;
-    width: 200px; /* Ajuste el tamaño de la tarjeta */
-    height: 200px; /* Tarjetas cuadradas */
+    width: 300px; 
+    height: 300px; 
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -121,13 +120,13 @@ getGifs();
   .card-img-top {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Asegura que la imagen ocupe el área de la tarjeta */
+    object-fit: cover; /* cubrir area */
   }
 
   .card-body {
     flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: column;/*direccion elementos */
     justify-content: center;
   }
 

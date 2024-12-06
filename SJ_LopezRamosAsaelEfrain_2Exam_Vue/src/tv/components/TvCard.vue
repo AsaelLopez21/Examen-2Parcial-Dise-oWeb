@@ -1,4 +1,5 @@
 <script setup>
+//Informacion que se mostrara
 defineProps({
   titulo: {
     type: String,
@@ -16,8 +17,9 @@ defineProps({
 </script>
 
 <template>
+  <!-- !Informacion a mostrar en la card -->
   <div class="card">
-    <img :src="imagen" :alt="`Poster del TV Show ${titulo}`" class="card-img-top" />
+    <img :src="imagen" :alt="`Poster ${titulo}`" class="card-img-top" />
     <div class="card-body">
       <h5 class="card-title">{{ titulo }}</h5>
       <p class="card-text">{{ descripcion }}</p> 
@@ -37,7 +39,7 @@ defineProps({
   border: 1px solid #dee2e6; 
   background-color: #d6d2c4;
   border: 10px solid #e1e1e1;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease; /*transicion para la card */
 }
 
 .card-img-top {
@@ -66,7 +68,7 @@ defineProps({
 .card:hover {
   border-color: #0fe2f1; 
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);  /* Agrega una sombra azul brillante */
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.8);  /* Agrega sombra azul*/
 
 }
 </style>

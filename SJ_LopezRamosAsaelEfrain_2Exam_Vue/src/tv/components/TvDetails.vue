@@ -19,7 +19,7 @@ const getTvShowDetails = async (id) => {
   try {
     const resp = await axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=90a80049eeae86e04ced1a9cc9c2d6a3&language=en-US`);
     const data = resp.data;
-
+    //Informacion detallada del show
     tvShowDetails.value = {
       titulo: data.name,
       descripcion: data.overview,
@@ -34,6 +34,7 @@ const getTvShowDetails = async (id) => {
   } catch (error) {
     console.log('Error:', error);
   } finally {
+    //terminar el loading despues de terminar de cargar
     loading.value = false; 
   }
 };
@@ -60,6 +61,7 @@ const getTvShowDetails = async (id) => {
         <h5 class="card-title">{{ tvShowDetails.titulo }}</h5>
         <p class="card-text descripcion">{{ tvShowDetails.descripcion }}</p>
         <p class="card-text"><strong>Actores:</strong> {{ tvShowDetails.actores }}</p>
+        <!-- !Boton para regresar despues de ver la informacion especifica -->
         <RouterLink 
           to="/tv" 
           class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3 d-flex justify-content-center" 
@@ -74,6 +76,7 @@ const getTvShowDetails = async (id) => {
 </template>
 
 <style scoped>
+/* Estilo spinner */
 .spinner-container {
   display: flex;
   justify-content: center;
@@ -93,7 +96,7 @@ const getTvShowDetails = async (id) => {
 .card-img-top {
   width: 100%;
   height: 300px;
-  object-fit: contain;
+  object-fit: contain;/*que la image rellene todo */
 }
 
 .card-body {
@@ -116,12 +119,16 @@ const getTvShowDetails = async (id) => {
   color: #000000;
 }
 
+/* Estilos spinner */
 .loader {
   max-width: 15rem;
   width: 100%;
   height: auto;
   stroke-linecap: round;
 }
+
+/* Estilos spinner */
+
 
 circle {
   fill: none;

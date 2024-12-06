@@ -2,6 +2,7 @@
 import { ref } from "vue";
 import PostCard from "./components/PostCard.vue";
 
+//Importar la informacion de la api
 const pelis = ref([]);
 const options = {
   method: "GET",
@@ -29,6 +30,7 @@ const getMovie = async () => {
   }
 };
 
+//Funciones y valores para moverse entre los resultados de la api
 const valor = 6;
 const inicio = ref(0);
 const fin = ref(6);
@@ -49,6 +51,7 @@ const backMovie = () => {
   }
 };
 
+//transicion para regresar arrba cuando se da en siguiente o anterior
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -57,6 +60,7 @@ getMovie();
 </script>
 
 <template>
+  <!-- !Informacion a mostrar de la card -->
   <h5 class="display-5 mt-4 ms-5" id="titulo">Peliculas Populares</h5>
 
   <div class="row d-flex justify-content-center">
@@ -67,6 +71,7 @@ getMovie();
       :imagen="`https://image.tmdb.org/t/p/w500${p.poster_path}`" 
       class="col-4 d-flex"
     >
+    <!-- !router para ver los detalles -->
     <RouterLink 
         :to="`/movie/${p.id}`" 
         class="btn btn-info text-white fw-bold py-2 px-4 rounded-pill mt-3" 
@@ -78,6 +83,7 @@ getMovie();
   </div>
   <div class="d-flex justify-content-center">
 
+    <!-- ?botonres para moverse en el contenido -->
     <button type="button" class="btn btn-outline-secondary btn-lg me-3 mb-4 mt-3" 
       data-mdb-ripple-init 
       data-mdb-ripple-color="dark"
